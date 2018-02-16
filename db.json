@@ -1,0 +1,24 @@
+{
+  "messages": [
+    {
+      "id": "1",
+      "type": "important",
+      "date": "2018-02-16",
+      "content": "this is a very important message",
+      "liked": true
+    },
+    {
+      "id": "2",
+      "type": "less important",
+      "date": "2018-02-15",
+      "content": "this is a less important message",
+      "liked": false
+    },
+    {
+      "id": "3",
+      "type": "not important",
+      "date": "2018-02-13",
+      "content": "this is not an important message"
+    }
+  ]
+}

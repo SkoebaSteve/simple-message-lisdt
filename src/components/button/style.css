@@ -1,0 +1,9 @@
+.button {
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  background-color: transparent;
+}
+
+.button.active {
+  background-color: #ccc;
+}
