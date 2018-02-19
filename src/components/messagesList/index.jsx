@@ -21,15 +21,4 @@ class MessagesList extends React.Component {
   }
 }
 
-// const MessagesList = ({ messages, changeLiked }) => (
-//   <ul>
-//     { messages.map(message => (
-//       <li key={message.id}>
-//         <Message {...message} changeLiked={changeLiked} />
-//       </li>
-//       ))
-//     }
-//   </ul>
-// )
-
 export default MessagesList

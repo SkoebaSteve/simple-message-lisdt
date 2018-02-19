@@ -1,11 +1,19 @@
 const Api = {
   fetchFromAPI: async (endpoint) => {
-    const response = await fetch(`http://localhost:3223/${endpoint}`)
-    return response.json()
+    try {
+      const response = await fetch(`http://localhost:3223/${endpoint}`)
+      return response.json()
+    } catch (e) {
+      throw (new Error(e))
+    }
   },
   postToAPI: async (endpoint, data) => {
-    const response = await fetch(`http://localhost:3223/${endpoint}`)
-    return response.json()
+    try {
+      const response = await fetch(`http://localhost:3223/${endpoint}`)
+      return data
+    } catch (e) {
+      throw (new Error(e))
+    }
   }
 }
 

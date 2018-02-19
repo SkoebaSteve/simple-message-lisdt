@@ -1,4 +1,4 @@
-import Api from '../api.js'
+import Api from '../api'
 
 const fetchMessages = () => Api.fetchFromAPI('messages')
 const postLiked = payload => Api.postToAPI('messages', payload)

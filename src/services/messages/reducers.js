@@ -4,10 +4,10 @@ const messages = (state = [], action) => {
       return action.messages
     case 'MESSAGES_SET_LIKE_SUCCEEDED':
       return state.map(message =>
-        (message.id === action.message.id) 
-          ? {...message, liked: action.message.liked}
+        ((message.id === action.message.id)
+          ? { ...message, liked: action.message.liked }
           : message
-      )
+        ))
     default:
       return state
   }

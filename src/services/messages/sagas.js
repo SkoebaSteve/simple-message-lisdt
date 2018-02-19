@@ -13,8 +13,8 @@ function* getMessages() {
 
 function* setLiked(action) {
   try {
-    const { id, liked } = action.payload
-    yield put({ type: 'MESSAGES_SET_LIKE_SUCCEEDED', message: { id, liked } })
+    const message = yield call(postLiked, action.payload)
+    yield put({ type: 'MESSAGES_SET_LIKE_SUCCEEDED', message })
   } catch (e) {
     yield put({ type: 'MESSAGES_SET_LIKE_FAILED', error: e.message })
   }
