@@ -1,12 +1,9 @@
 import React from 'react'
-import './App.css'
+import store from './store'
 import MessagesContainer from './containers/messagesContainer'
 
 const App = () => (
-  <div>
-    <MessagesContainer />
-  </div>
+  <MessagesContainer store={store} />
 )
-
 
 export default App
