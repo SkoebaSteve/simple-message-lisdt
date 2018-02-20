@@ -3,6 +3,7 @@ import MessagesList from '../../components/messagesList'
 
 const mapStateToProps = state => ({ messages: state.messages })
 
+// export for easy testing: https://github.com/reactjs/react-redux/issues/325
 export const mapDispatchToProps = dispatch => (
   {
     changeLiked: (id, liked) => {
