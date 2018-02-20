@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Has the default values. 1`] = `
+<button
+  className="button special"
+>
+  important
+</button>
+`;

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Has the default values. 1`] = `
+<div>
+  <div>
+    important
+     | 
+    <t
+      ago={false}
+      calendar={false}
+      decimal={false}
+      element="time"
+      filter={[Function]}
+      format="MMMM DD"
+      fromNow={false}
+      interval={60000}
+      onChange={[Function]}
+      toNow={false}
+      unit={null}
+      unix={false}
+      utc={false}
+    >
+      2018-02-16
+    </t>
+  </div>
+  <p>
+    this is a very important message
+  </p>
+  <Button
+    className={false}
+    label="like this"
+    onClick={[Function]}
+  />
+  <Button
+    className={false}
+    label="dislike this"
+    onClick={[Function]}
+  />
+</div>
+`;

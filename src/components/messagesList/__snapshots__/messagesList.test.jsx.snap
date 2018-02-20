@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Has the default values. 1`] = `
+<ul>
+  <li
+    key="1"
+  >
+    <Message
+      content="this is a very important message"
+      date="2018-02-16"
+      id="1"
+      type="important"
+    />
+  </li>
+  <li
+    key="2"
+  >
+    <Message
+      content="this is a less important message"
+      date="2018-02-14"
+      id="2"
+      type="less important"
+    />
+  </li>
+</ul>
+`;

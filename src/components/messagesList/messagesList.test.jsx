@@ -1,13 +1,9 @@
 /* eslint-env jest */
-/* eslint no-unused-expressions: 0 */ // allows to use aliasses like .to.exist
 import React from 'react'
-import chai, { expect } from 'chai'
 import { shallow } from 'enzyme'
 import sinon from 'sinon'
-import chaiEnzyme from 'chai-enzyme' // using beta: https://github.com/producthunt/chai-enzyme/issues/199
+import toJson from 'enzyme-to-json'
 import MessageList from './'
-
-chai.use(chaiEnzyme())
 
 const messages = [{
   id: '1',
@@ -25,8 +21,7 @@ it('Has the default values.', () => {
   const didMount = sinon.spy()
   // shallow has access to the lifecycle from enzyme 3: https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md
   const wrapper = shallow(<MessageList messages={messages} getMessages={didMount} />)
-  expect(wrapper.find('ul')).to.have.length(1)
-  expect(wrapper.find('li')).to.have.length(2)
-  expect(didMount.callCount).to.equal(1)
+  expect(toJson(wrapper)).toMatchSnapshot()
+  expect(didMount.callCount).toEqual(1)
 })
 
