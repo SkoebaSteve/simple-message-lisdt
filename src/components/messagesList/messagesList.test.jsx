@@ -2,7 +2,7 @@
 /* eslint no-unused-expressions: 0 */ // allows to use aliasses like .to.exist
 import React from 'react'
 import chai, { expect } from 'chai'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import sinon from 'sinon'
 import chaiEnzyme from 'chai-enzyme' // using beta: https://github.com/producthunt/chai-enzyme/issues/199
 import MessageList from './'
@@ -23,7 +23,8 @@ const messages = [{
 
 it('Has the default values.', () => {
   const didMount = sinon.spy()
-  const wrapper = mount(<MessageList messages={messages} getMessages={didMount} />)
+  // shallow has access to the lifecycle from enzyme 3: https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md
+  const wrapper = shallow(<MessageList messages={messages} getMessages={didMount} />)
   expect(wrapper.find('ul')).to.have.length(1)
   expect(wrapper.find('li')).to.have.length(2)
   expect(didMount.callCount).to.equal(1)
