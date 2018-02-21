@@ -4,13 +4,10 @@ import env from '../../env'
 import API from './'
 
 const data = { test: true }
-const error = { message: 'network error' }
 
 describe('succesful fetch requests', () => {
   beforeEach(() => {
-    fetchMock
-      .get(env.apiEndpoint, data)
-      .catch(error)
+    fetchMock.get(env.apiEndpoint, data)
   })
   afterEach(() => {
     fetchMock.restore()
@@ -26,5 +23,27 @@ describe('succesful fetch requests', () => {
     expect.assertions(1)
     const results = await API.postToAPI('', data)
     expect(results).toEqual(data)
+  })
+})
+
+describe('unsuccesful fetch requests', () => {
+  it('returns an error on an usuccessful fetch request', async () => {
+    let message
+    try {
+      await API.fetchFromAPI()
+    } catch (error) {
+      message = error.message
+    }
+    expect(message).toBeTruthy()
+  })
+
+  it('returns an error on an usuccessful post request', async () => {
+    let message
+    try {
+      await API.postToAPI()
+    } catch (error) {
+      message = error.message
+    }
+    expect(message).toBeTruthy()
   })
 })
