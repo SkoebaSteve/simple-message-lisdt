@@ -1,15 +1,17 @@
+import env from '../../env'
+
 const Api = {
-  fetchFromAPI: async (endpoint) => {
+  fetchFromAPI: async (path) => {
     try {
-      const response = await fetch(`http://localhost:3223/${endpoint}`)
+      const response = await fetch(env.apiEndpoint + path)
       return response.json()
     } catch (e) {
       throw (new Error(e))
     }
   },
-  postToAPI: async (endpoint, data) => {
+  postToAPI: async (path, data) => {
     try {
-      const response = await fetch(`http://localhost:3223/${endpoint}`)
+      const response = await fetch(env.apiEndpoint + path)
       return data
     } catch (e) {
       throw (new Error(e))
