@@ -1,12 +1,15 @@
 {
   "extends": [
-      "airbnb"
+    "airbnb"
   ],
   "parser": "babel-eslint",
   "env": {
-      "browser": true
-    },
-    "plugins": ["compat"],
+    "browser": true
+  },
+  "plugins": ["compat"],
+  "settings": {
+    "polyfills": []
+  }, 
   "rules": {
       "semi": ["error", "never"],
       "object-curly-newline": ["error", { "multiline": true }],

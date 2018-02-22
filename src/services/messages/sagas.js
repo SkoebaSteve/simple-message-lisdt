@@ -1,22 +1,28 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { fetchMessages, postLiked } from './api'
+import {
+  messagesFetchSucceeded,
+  messagesFetchFailed,
+  messagesSetLikedSucceeded,
+  messagesSetLikedFailed,
+} from './actions'
 
 // worker Saga: will be fired on MESSAGES_FETCH_REQUESTED actions
 function* getMessages() {
   try {
     const messages = yield call(fetchMessages)
-    yield put({ type: 'MESSAGES_FETCH_SUCCEEDED', messages })
+    yield put(messagesFetchSucceeded(messages))
   } catch (e) {
-    yield put({ type: 'MESSAGES_FETCH_FAILED', error: e.message })
+    yield put(messagesFetchFailed(e.message))
   }
 }
 
 function* setLiked(action) {
   try {
     const message = yield call(postLiked, action.payload)
-    yield put({ type: 'MESSAGES_SET_LIKE_SUCCEEDED', message })
+    yield put(messagesSetLikedSucceeded(message))
   } catch (e) {
-    yield put({ type: 'MESSAGES_SET_LIKE_FAILED', error: e.message })
+    yield put(messagesSetLikedFailed(e.message))
   }
 }
 

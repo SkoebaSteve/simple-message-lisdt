@@ -32,7 +32,7 @@ describe('unsuccesful fetch requests', () => {
     try {
       await API.fetchFromAPI()
     } catch (error) {
-      message = error.message
+      ({ message } = error)
     }
     expect(message).toBeTruthy()
   })
@@ -42,7 +42,7 @@ describe('unsuccesful fetch requests', () => {
     try {
       await API.postToAPI()
     } catch (error) {
-      message = error.message
+      ({ message } = error)
     }
     expect(message).toBeTruthy()
   })
