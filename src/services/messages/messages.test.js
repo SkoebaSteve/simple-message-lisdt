@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import { take } from 'redux-saga/effects'
+import { call, put } from 'redux-saga/effects'
 import messages from './reducers'
 import {
   messagesFetchSucceeded,
@@ -8,6 +8,7 @@ import {
   messagesSetLikedFailed,
 } from './actions'
 import { getMessages, setLiked } from './sagas'
+import { fetchMessages, postLiked } from './api'
 
 const testMessages = [{
   id: '1',
@@ -54,7 +55,24 @@ describe('message reducers', () => {
 /* TESTING SAGAS */
 
 describe('message saga', () => {
-  it('should fire the messages succeeded', () => {
+  const messageGen = getMessages()
+  it('should fire the message fetch function', () => {
+    expect(messageGen.next().value)
+      .toEqual(call(fetchMessages))
+  })
+  it('should dispatch the fetched messages success action', () => {
+    expect(messageGen.next(testMessages).value)
+      .toEqual(put(messagesFetchSucceeded(testMessages)))
+  })
+
+  const likedGen = setLiked({ payload: testMessages[0] })
+  it('should fire the message fetch function', () => {
+    expect(likedGen.next().value)
+      .toEqual(call(postLiked, testMessages[0]))
+  })
+  it('should dispatch the post liked success action', () => {
+    expect(likedGen.next(testMessages[0]).value)
+      .toEqual(put(messagesSetLikedSucceeded(testMessages[0])))
   })
 })
 

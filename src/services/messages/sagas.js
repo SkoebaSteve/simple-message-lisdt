@@ -8,7 +8,7 @@ import {
 } from './actions'
 
 // worker Saga: will be fired on MESSAGES_FETCH_REQUESTED actions
-function* getMessages() {
+export function* getMessages() {
   try {
     const messages = yield call(fetchMessages)
     yield put(messagesFetchSucceeded(messages))
@@ -17,7 +17,7 @@ function* getMessages() {
   }
 }
 
-function* setLiked(action) {
+export function* setLiked(action) {
   try {
     const message = yield call(postLiked, action.payload)
     yield put(messagesSetLikedSucceeded(message))
@@ -26,9 +26,7 @@ function* setLiked(action) {
   }
 }
 
-function* messagesSaga() {
+export default function* messagesSaga() {
   yield takeLatest('MESSAGES_FETCH_REQUESTED', getMessages)
   yield takeLatest('MESSAGES_SET_LIKE_REQUESTED', setLiked)
 }
-
-export default messagesSaga
